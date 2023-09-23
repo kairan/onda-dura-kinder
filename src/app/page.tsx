@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,7 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SignInButton } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,13 +19,19 @@ export default function Home() {
           <CardDescription>Card Description</CardDescription>
         </CardHeader>
         <CardContent>
+          <SignOutButton>
+            <Button variant="destructive">Sign out</Button>
+          </SignOutButton>
           <p>Card Content</p>
         </CardContent>
         <CardFooter>
           <p>Card Footer</p>
-          <SignInButton>
-            <Button variant="default">Sign in with Clerk</Button>
-          </SignInButton>
+          <Link
+            className={buttonVariants({ variant: "secondary" })}
+            href={"/signin"}
+          >
+            Sign In
+          </Link>
         </CardFooter>
       </Card>
     </main>
